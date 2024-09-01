@@ -7,17 +7,16 @@ import 'package:eco_app/models/order.dart';
 import 'package:eco_app/services/auth_gate.dart';
 import 'package:eco_app/themes/theme_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
-  await Firebase.initializeApp(
-    name: 'eco_project',
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await dotenv.load();
+  final firebaseOptions = await getFirebaseOptions(defaultTargetPlatform);
+  await Firebase.initializeApp(options: firebaseOptions);
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => OrderProvider()),
     ChangeNotifierProvider(create: (context) => ArrivalProvider()),
