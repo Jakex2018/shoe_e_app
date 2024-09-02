@@ -19,7 +19,6 @@ class _DeliveryPageState extends State<DeliveryPage> {
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: const Text('Payment'),
-        
         centerTitle: true,
         leading: const SizedBox(),
       ),

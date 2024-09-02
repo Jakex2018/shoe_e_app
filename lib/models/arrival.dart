@@ -40,15 +40,6 @@ class ArrivalProvider extends ChangeNotifier {
         name: 'Wild Rider Layers Unisex Sneakers',
         image: 'asset/shoe04.png',
         price: 250,
-        cat: BrandCategory.woman ,
-        desc:
-            "Keep the game going in the shoe that launched a movement, our Future Rider Play On Unisex Sneakers. This shoe is dedicated to pared-down performance, featuring a super-light nylon, suede and leather upper and our famous shock-absorbing Federbein outsole to keep you pounding the pavement in style."),
-    Arrival(
-        id: 2,
-        prom: double.parse('0'),
-        name: 'Wild Rider Layers Unisex Sneakers',
-        image: 'asset/shoe04.png',
-        price: 250,
         cat: BrandCategory.woman,
         desc:
             "Keep the game going in the shoe that launched a movement, our Future Rider Play On Unisex Sneakers. This shoe is dedicated to pared-down performance, featuring a super-light nylon, suede and leather upper and our famous shock-absorbing Federbein outsole to keep you pounding the pavement in style."),
@@ -67,7 +58,16 @@ class ArrivalProvider extends ChangeNotifier {
         name: 'Wild Rider Layers Unisex Sneakers',
         image: 'asset/shoe04.png',
         price: 250,
-        cat:  BrandCategory.woman,
+        cat: BrandCategory.woman,
+        desc:
+            "Keep the game going in the shoe that launched a movement, our Future Rider Play On Unisex Sneakers. This shoe is dedicated to pared-down performance, featuring a super-light nylon, suede and leather upper and our famous shock-absorbing Federbein outsole to keep you pounding the pavement in style."),
+    Arrival(
+        id: 2,
+        prom: double.parse('0'),
+        name: 'Wild Rider Layers Unisex Sneakers',
+        image: 'asset/shoe04.png',
+        price: 250,
+        cat: BrandCategory.woman,
         desc:
             "Keep the game going in the shoe that launched a movement, our Future Rider Play On Unisex Sneakers. This shoe is dedicated to pared-down performance, featuring a super-light nylon, suede and leather upper and our famous shock-absorbing Federbein outsole to keep you pounding the pavement in style."),
   ];

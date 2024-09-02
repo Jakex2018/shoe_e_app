@@ -37,3 +37,14 @@ class MyApp extends StatelessWidget {
         theme: Provider.of<ThemeProvider>(context).light);
   }
 }
+
+
+/*
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if true;
+    }
+  }
+}
+ */

@@ -1,7 +1,6 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, unused_element
 
 import 'dart:io';
-import 'dart:ui';
 import 'package:eco_app/services/auth_services.dart';
 import 'package:eco_app/services/database_service.dart';
 import 'package:eco_app/widget/button_one.dart';

@@ -1,7 +1,7 @@
 import 'package:eco_app/models/arrival.dart';
 
 class Cart {
-  Arrival arrival;
+  final Arrival arrival;
   int quantity;
   int totalPrice = 0;
 
