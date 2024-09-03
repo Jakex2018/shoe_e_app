@@ -31,13 +31,13 @@ class DatabaseService {
     await _db.collection('Users').doc(uid).set(userMap);
   }
 
-  Future<UserProfile?> getUserFirebase(String uid) async {
+  Future<UserProfile> getUserFirebase(String uid) async {
     try {
       DocumentSnapshot userDoc = await _db.collection('Users').doc(uid).get();
 
       return UserProfile.fromDocument(userDoc);
     } catch (e) {
-      return null;
+      throw Error();
     }
   }
 }

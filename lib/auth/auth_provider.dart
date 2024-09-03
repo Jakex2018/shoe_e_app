@@ -5,5 +5,5 @@ import 'package:flutter/foundation.dart';
 class UserProvider extends ChangeNotifier {
   final _db = DatabaseService();
 
-  Future<UserProfile?> userProfile(String uid) => _db.getUserFirebase(uid);
+  Future<UserProfile> userProfile(String uid) => _db.getUserFirebase(uid);
 }
