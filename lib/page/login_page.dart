@@ -20,110 +20,107 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-
-
     void login() async {
       showLoadingCircle(context);
-      try {
-        await authService.loginUser(_email.text, _password.text);
 
-        if (mounted) hideLoadingCircle(context);
-      } catch (e) {
-        if (mounted) hideLoadingCircle(context);
-      }
+      await authService.loginUser(_email.text, _password.text, context);
+
+      if (mounted) hideLoadingCircle(context);
     }
 
     return Material(
-      child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Login Screen'),
-            centerTitle: true,
-            automaticallyImplyLeading: false,
-          ),
-          body: SingleChildScrollView(
-            child: Stack(
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
-                  color: Theme.of(context).colorScheme.surface,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Welcome Back!',
-                          style: TextStyle(
-                              color:
-                                  Theme.of(context).colorScheme.inversePrimary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30),
-                        ),
-                        Text(
-                          'To keep connected with us please login with your personal info!',
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Scaffold(
+            appBar: AppBar(
+              title: const Text('Login Screen'),
+              centerTitle: true,
+              automaticallyImplyLeading: false,
+            ),
+            body: SingleChildScrollView(
+              child: Stack(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 30),
+                    color: Theme.of(context).colorScheme.surface,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 60),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Welcome Back!',
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        FormText(
-                        
-                          hintText: 'Email Adress',
-                          controller: _email,
-                          value: 'Por favor, ingresa un email valido',
-                          fieldType: FieldType.email,
-                          suffix: false,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        FormText(
-                      
-                          fieldType: FieldType.password,
-                          hintText: 'Password',
-                          controller: _password,
-                          value: 'Por favor, ingresa una contraseña valida',
-                          suffix: true,
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        ButtonOne(title: 'Sign In', onTap: login),
-                        const SizedBox(height: 30),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Not a member?',
-                              style: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .inversePrimary),
+                          Text(
+                            'To keep connected with us please login with your personal info!',
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
                             ),
-                            const SizedBox(width: 5),
-                            GestureDetector(
-                              onTap: widget.onTap,
-                              child: Text(
-                                'Register Now',
+                          ),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          FormText(
+                            hintText: 'Email Adress',
+                            controller: _email,
+                            value: 'Por favor, ingresa un email valido',
+                            fieldType: FieldType.email,
+                            suffix: false,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          FormText(
+                            fieldType: FieldType.password,
+                            hintText: 'Password',
+                            controller: _password,
+                            value: 'Por favor, ingresa una contraseña valida',
+                            suffix: true,
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          ButtonOne(title: 'Sign In', onTap: login),
+                          const SizedBox(height: 30),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Not a member?',
                                 style: TextStyle(
-                                    fontSize: 16,
                                     color: Theme.of(context)
                                         .colorScheme
                                         .inversePrimary),
                               ),
-                            ),
-                          ],
-                        )
-                      ],
+                              const SizedBox(width: 5),
+                              GestureDetector(
+                                onTap: widget.onTap,
+                                child: Text(
+                                  'Register Now',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          )),
+                ],
+              ),
+            )),
+      ),
     );
   }
 }

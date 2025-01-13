@@ -3,28 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<FirebaseOptions> getFirebaseOptions(TargetPlatform platform) async {
-  await dotenv.load();
+  //await dotenv.load();
 
   switch (platform) {
     case TargetPlatform.android:
-      final apiKey = dotenv.env['API_KEY_ANDROID'];
-      final appId = dotenv.env['APP_ID_ANDROID'];
-      if (apiKey == null || appId == null) {
+      const apiKey = "AIzaSyCG6jBKksYwAJk3dNLGLjN6tW8IDITLpSE";
+      const appId = "1:81352751083:android:dc3bdd1a95f1c3e55e4bae";
+      // ignore: unnecessary_null_comparison
+      if (appId == null || apiKey == null) {
         throw Exception(
             'Missing required environment variables for Android: API_KEY_ANDROID or API_ID_ANDROID');
       }
-      return FirebaseOptions(
+
+      return const FirebaseOptions(
         apiKey: apiKey,
         appId: appId,
         messagingSenderId: '81352751083',
         projectId: 'eco-app-bb2b7',
         storageBucket: 'eco-app-bb2b7.appspot.com',
       );
+
     case TargetPlatform.iOS:
-      final apiKey = dotenv.env['API_KEY_IOS'];
-      final appId = dotenv.env['APP_ID_IOS'];
+      const apiIOS = 'AIzaSyApd619k4glCfDuq5gGRaYI1v7gUjHdEYA';
+      const idIOS = '1:81352751083:ios:77e87f0f1a6d33885e4bae';
+      const apiKey = apiIOS;
+      const appId = idIOS;
       final iosBundleId = dotenv.env['IOS_BUNDLE_ID']; // Add for iOS
-      if (apiKey == null || appId == null || iosBundleId == null) {
+      if (iosBundleId == null) {
         throw Exception(
             'Missing required environment variables for iOS: API_KEY_IOS, API_ID_IOS, or IOS_BUNDLE_ID');
       }

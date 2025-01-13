@@ -3,18 +3,17 @@ import 'package:eco_app/firebase_options.dart';
 import 'package:eco_app/models/arrival.dart';
 import 'package:eco_app/models/brands.dart';
 import 'package:eco_app/models/order.dart';
-
 import 'package:eco_app/services/auth_gate.dart';
 import 'package:eco_app/themes/theme_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+//import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load();
+  //await dotenv.load();
   final firebaseOptions = await getFirebaseOptions(defaultTargetPlatform);
   await Firebase.initializeApp(options: firebaseOptions);
   runApp(MultiProvider(providers: [
@@ -37,14 +36,3 @@ class MyApp extends StatelessWidget {
         theme: Provider.of<ThemeProvider>(context).light);
   }
 }
-
-
-/*
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read, write: if true;
-    }
-  }
-}
- */

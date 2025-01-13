@@ -8,7 +8,10 @@ class UserProfile {
   final String image;
 
   UserProfile(
-      {required this.uid, required this.email, required this.username,required this.image});
+      {required this.uid,
+      required this.email,
+      required this.username,
+      required this.image});
 
   factory UserProfile.fromDocument(DocumentSnapshot doc) {
     return UserProfile(

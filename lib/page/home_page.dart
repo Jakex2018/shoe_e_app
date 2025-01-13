@@ -29,68 +29,72 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldkey,
-      appBar: AppBar(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const CartPage(),
-                      ));
-                },
-                child: const Icon(Icons.shopify_outlined)),
-          ),
-        ],
-        leading: GestureDetector(
-            onTap: () {
-              _scaffoldkey.currentState?.openDrawer();
-            },
-            child: const Icon(Icons.menu)),
-        title: const Text('Ecommerce'),
-        centerTitle: true,
-      ),
-      drawer: const DrawerBody(),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Container(
-          color: Theme.of(context).colorScheme.surface,
-          child: Column(
-            children: [
-              Image.asset(
-                'asset/banner.webp',
-                height: 250,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: DescTextButton(
-                  text: 'Top Brands',
-                  onTap: () {},
-                  button: true,
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Scaffold(
+        key: _scaffoldkey,
+        appBar: AppBar(
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CartPage(),
+                        ));
+                  },
+                  child: const Icon(Icons.shopify_outlined)),
+            ),
+          ],
+          leading: GestureDetector(
+              onTap: () {
+                _scaffoldkey.currentState?.openDrawer();
+              },
+              child: const Icon(Icons.menu)),
+          title: const Text('Ecommerce'),
+          centerTitle: true,
+        ),
+        drawer: const DrawerBody(),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            color: Theme.of(context).colorScheme.surface,
+            child: Column(
+              children: [
+                Image.asset(
+                  'asset/banner.jpg',
+                  height: 250,
+                  fit: BoxFit.cover,
                 ),
-              ),
-              homeItemsCard(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: DescTextButton(
-                  text: 'New Arrival',
-                  onTap: () {},
-                  button: false,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: DescTextButton(
+                    text: 'Top Brands',
+                    onTap: () {},
+                    button: true,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              homeListOption(),
-              const SizedBox(
-                height: 30,
-              ),
-              homeCategory(),
-            ],
+                homeItemsCard(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: DescTextButton(
+                    text: 'New Arrival',
+                    onTap: () {},
+                    button: false,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                homeListOption(),
+                const SizedBox(
+                  height: 30,
+                ),
+                homeCategory(),
+              ],
+            ),
           ),
         ),
       ),

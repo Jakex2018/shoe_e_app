@@ -1,27 +1,26 @@
-import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/material.dart';
 
 class LoginServices {
   final _auth = FirebaseAuth.instance;
   User? getCurrentUser() => _auth.currentUser;
   String getCurrentId() => _auth.currentUser!.uid;
-  Future<UserCredential?> loginUser(String email, String password) async {
+  Future<UserCredential?> loginUser(
+      String email, String password, context) async {
     try {
       final loginCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
       if (loginCredential.user != null) {
-        Fluttertoast.showToast(
-          msg: "Login Successfull!!!",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1, // 1 second for iOS/Web
-          backgroundColor: const Color.fromARGB(255, 6, 174, 73),
-          textColor: const Color(0xFff1f1f1),
-          fontSize: 16.0,
+        var snackbar = const SnackBar(
+          content:
+              Text('Login Succesfull', style: TextStyle(color: Colors.white)),
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 1),
+          margin: EdgeInsets.only(bottom: 50, left: 60, right: 50),
+          backgroundColor: Color.fromARGB(255, 12, 165, 53),
         );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
       }
     } on FirebaseAuthException catch (e) {
       String message;
@@ -32,33 +31,33 @@ class LoginServices {
       } else {
         message = 'Ocurrió un error durante el inicio de sesión.';
       }
-      Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1, // 1 second for iOS/Web
-        backgroundColor: const Color.fromARGB(255, 174, 14, 6),
-        textColor: const Color.fromARGB(255, 255, 255, 255),
-        fontSize: 16.0,
+      var snackbar = SnackBar(
+        content: Text(message, style: const TextStyle(color: Colors.white)),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 1),
+        margin: const EdgeInsets.only(bottom: 50, left: 60, right: 50),
+        backgroundColor: const Color.fromARGB(255, 12, 165, 53),
       );
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
     return null;
   }
 
-  Future<UserCredential?> registerUser(String email, String password) async {
+  Future<UserCredential?> registerUser(
+      String email, String password, context) async {
     try {
       final registerCredential = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       if (registerCredential.user != null) {
-        Fluttertoast.showToast(
-          msg: "Register Successfull!!!",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1, // 1 second for iOS/Web
-          backgroundColor: const Color.fromARGB(255, 6, 174, 73),
-          textColor: const Color(0xFff1f1f1),
-          fontSize: 16.0,
+        var snackbar = const SnackBar(
+          content: Text('Register Successfulyy',
+              style: TextStyle(color: Colors.white)),
+          behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 1),
+          margin: EdgeInsets.only(bottom: 50, left: 60, right: 50),
+          backgroundColor: Color.fromARGB(255, 12, 165, 53),
         );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
       }
     } on FirebaseAuthException catch (e) {
       String message;
@@ -69,15 +68,14 @@ class LoginServices {
       } else {
         message = 'Ocurrió un error durante el inicio de sesión.';
       }
-      Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIosWeb: 1, // 1 second for iOS/Web
-        backgroundColor: const Color.fromARGB(255, 174, 14, 6),
-        textColor: const Color.fromARGB(255, 255, 255, 255),
-        fontSize: 16.0,
+      var snackbar = SnackBar(
+        content: Text(message, style: const TextStyle(color: Colors.white)),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 1),
+        margin: const EdgeInsets.only(bottom: 50, left: 60, right: 50),
+        backgroundColor: const Color.fromARGB(255, 12, 165, 53),
       );
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
     return null;
   }
