@@ -4,11 +4,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<FirebaseOptions> getFirebaseOptions(TargetPlatform platform) async {
   //await dotenv.load();
-
+  const apiKey = "AIzaSyCG6jBKksYwAJk3dNLGLjN6tW8IDITLpSE";
+  const appId = "1:81352751083:android:dc3bdd1a95f1c3e55e4bae";
   switch (platform) {
     case TargetPlatform.android:
-      const apiKey = "AIzaSyCG6jBKksYwAJk3dNLGLjN6tW8IDITLpSE";
-      const appId = "1:81352751083:android:dc3bdd1a95f1c3e55e4bae";
+
       // ignore: unnecessary_null_comparison
       if (appId == null || apiKey == null) {
         throw Exception(
@@ -44,7 +44,13 @@ Future<FirebaseOptions> getFirebaseOptions(TargetPlatform platform) async {
     case TargetPlatform.macOS:
     // ... (similar logic for macOS, if needed)
     case TargetPlatform.windows:
-    // ... (similar logic for windows, if needed)
+      return const FirebaseOptions(
+        apiKey: apiKey,
+        appId: appId,
+        messagingSenderId: '81352751083',
+        projectId: 'eco-app-bb2b7',
+        storageBucket: 'eco-app-bb2b7.appspot.com',
+      );
     case TargetPlatform.linux:
     // ... (similar logic for linux, if needed)
     default:
